@@ -7,12 +7,15 @@ Created on Thu Dec 28 08:51:27 2017
 import math
 import numpy as np
 a=list(np.random.normal(size=(1000,)))
-
+a[500]=100
+a[501]=-100
 def max_subarray(a,sP,endP):
     """ find the subArray of list a such that sum(a(ind1:ind2))is maximized """
     L=endP-sP
     print(L)
-    if L==1 or L==0:
+    if L==0:
+        raise(Exception('0'))
+    if L==1:
         maxSum=a[sP]
         ind1=sP
         ind2=sP+1

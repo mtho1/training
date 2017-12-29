@@ -152,3 +152,13 @@ class Tree:
         yield p                          # report this position
         for c in self.children(p):
           fringe.append(c)              # add children to back of queue
+  def breadthfirst_array(self):
+      listOfPos=[]            #known positions top down breadth first ordering
+      listOfPos.append(self.root())
+      off=0
+      while len(listOfPos)>off:
+        p = listOfPos[off]             # remove from front of the queue
+        off+=1
+        for c in self.children(p):
+          listOfPos.append(c)
+      return listOfPos
