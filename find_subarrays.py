@@ -175,7 +175,7 @@ def find_subarrays5(a,x,st=0):
     #print(a)
     if L==1:
         if a[st]==x:
-            yield list([0])
+            yield list([st])
         else:
             yield -1
     for q in range(st,lenA):
@@ -189,7 +189,7 @@ def find_subarrays5(a,x,st=0):
            # print(x)
            # print(a[q])
            # print('------')
-            yield list([q])
+            yield [q]
             dropFlag=False
         elif L>1:
             dropped=a[q]
@@ -206,7 +206,8 @@ def find_subarrays5(a,x,st=0):
            # print(a)
            # print(allDropped)
            # print("========")
-            for sub in find_subarrays5(a,x-dropped,q+1): # minus dropped since we assume a[q] is in the set.# all cases for 1:q-1 have been covered so we can omit. we assume a[q] is in the set already
+            newX=x-dropped
+            for sub in find_subarrays5(a,newX,q+1): # minus dropped since we assume a[q] is in the set.# all cases for 1:q-1 have been covered so we can omit. we assume a[q] is in the set already
                 
                 if type(sub)==list:
                     
@@ -223,4 +224,4 @@ def find_subarrays5(a,x,st=0):
                    # print(a)
                    # print(allDropped)
                    # print("!!!!!!!!!!!")
-    return     
+    yield -1   
