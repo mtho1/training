@@ -7,7 +7,7 @@ Created on Thu Dec 21 15:58:20 2017
 import importlib
 import linked_binary_tree
 import math
-
+import numpy as np
 importlib.reload(linked_binary_tree)
 
 MikeTree=linked_binary_tree.LinkedBinaryTree()
@@ -99,7 +99,7 @@ def sortHeap(tree):
     L=MikeTree._size
     ListPos=tree.breadthfirst_array()
     L=len(ListPos)
-    sortedVal=[]
+    sortedVal=list([])
     for pos in ListPos[L-1:0:-1]:
         sortedVal.append(MikeTree.root().element())
         tree._replace(MikeTree.root(), pos.element())
